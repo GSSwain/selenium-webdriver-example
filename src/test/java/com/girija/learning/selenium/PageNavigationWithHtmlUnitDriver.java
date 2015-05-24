@@ -18,24 +18,36 @@ import org.openqa.selenium.WebDriver;
 import org.openqa.selenium.firefox.FirefoxBinary;
 import org.openqa.selenium.firefox.FirefoxDriver;
 import org.openqa.selenium.firefox.FirefoxProfile;
+import org.openqa.selenium.htmlunit.HtmlUnitDriver;
 
+import com.gargoylesoftware.htmlunit.BrowserVersion;
 import com.girija.learning.selenium.util.PropertyConfigurations;
 /**
- * This code is taken from the Selenium IDE -> export option 
+ * This example uses the HtmlUnitDriver
+ * 
+ * The pros and cons from https://code.google.com/p/selenium/wiki/HtmlUnitDriver
+ * 
+ * This is currently the fastest and most lightweight implementation of WebDriver. As the name suggests, this is based on HtmlUnit.
+ *	Pros
+ *
+ *   	Fastest implementation of WebDriver
+ *   	A pure Java solution and so it is platform independent.
+ *   	Supports Javascript 
+ *
+ *	Cons
+ *
+ *    	Emulates other browser's JS behaviour
  * 
  * */
-public class PageNavigation {
+public class PageNavigationWithHtmlUnitDriver {
 	private WebDriver driver;
 	private String baseUrl;
 
 	@Before
 	public void setUp() throws Exception {
-		// The following 2 lines are required if firefox is not installed on the
-		// system rather you are using a portable version..
-		FirefoxBinary firefoxBinary = new FirefoxBinary(new File(
-				PropertyConfigurations.getString("firefox.path"))); //$NON-NLS-1$
-		FirefoxProfile firefoxProfile = new FirefoxProfile();
-		driver = new FirefoxDriver(firefoxBinary, firefoxProfile);
+		// here we emulate Chrome as the browser
+		driver = new HtmlUnitDriver(BrowserVersion.CHROME);
+		((HtmlUnitDriver) driver).setJavascriptEnabled(true);
 		baseUrl = "http://docs.seleniumhq.org/"; //$NON-NLS-1$
 		driver.manage().timeouts().pageLoadTimeout(30, TimeUnit.SECONDS);
 		driver.manage().timeouts().implicitlyWait(10, TimeUnit.SECONDS);
