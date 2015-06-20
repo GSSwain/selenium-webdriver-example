@@ -2,7 +2,6 @@ package com.girija.learning.selenium;
 
 import static org.junit.Assert.assertEquals;
 import static org.junit.Assert.assertTrue;
-import static org.junit.Assert.fail;
 
 import java.io.File;
 import java.util.concurrent.TimeUnit;
@@ -10,9 +9,7 @@ import java.util.concurrent.TimeUnit;
 import org.junit.After;
 import org.junit.Before;
 import org.junit.Test;
-import org.openqa.selenium.Alert;
 import org.openqa.selenium.By;
-import org.openqa.selenium.NoAlertPresentException;
 import org.openqa.selenium.NoSuchElementException;
 import org.openqa.selenium.WebDriver;
 import org.openqa.selenium.firefox.FirefoxBinary;
@@ -26,7 +23,7 @@ import com.girija.learning.selenium.util.PropertyConfigurations;
  * */
 public class PageNavigationWithFirefoxDriver {
 	private WebDriver driver;
-	private String baseUrl;
+	private String baseUrl;			
 
 	@Before
 	public void setUp() throws Exception {
