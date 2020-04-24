@@ -2,7 +2,4 @@
 Use selenium webdriver to automate tests
 
 Contains examples for using
-- FirefoxDriver
-- InternetExplorerDriver
-- ChromeDriver
 - HtmlUnitDriver
